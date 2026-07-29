@@ -52,6 +52,12 @@ int main(){
     assert(topKDistinct(input4, 0) == expected4);
 
 
+    // k等于1,输入数字包含正数，0和负数
+    std::vector<int> input5{3,-1,4,0,5,5};
+    std::vector<int> expected5{5};
+
+    assert(topKDistinct(input5, 1) == expected5);
+
     std::cout << "All tests passed\n";
     return 0;
 }
