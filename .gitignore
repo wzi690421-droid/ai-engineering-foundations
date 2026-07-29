@@ -1,0 +1,38 @@
+# Build outputs
+build/
+cmake-build-*/
+bin/
+exercises/**/top_k
+*.o
+*.obj
+*.so
+*.a
+*.out
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+
+# Generated data and large models
+data/
+datasets/
+models/
+checkpoints/
+*.pt
+*.pth
+*.onnx
+*.engine
+
+# Runtime outputs
+logs/
+tmp/
+*.log
