@@ -13,19 +13,14 @@ std::vector<int> topKDistinct(
    
     std::sort(nums.begin(),nums.end(),std::greater<int>());
 
-    std::vector<int> result;
+    auto newEnd = std::unique(nums.begin(),nums.end());
+    nums.erase(newEnd,nums.end());
 
-    for (int value : nums){
-        if(result.empty()|| result.back() != value){
-            result.push_back(value);
-        }
+    if (nums.size()>k){
+        nums.resize(k);
     }
 
-    if (result.size()>k){
-        result.resize(k);
-    }
-
-    return result;
+    return nums;
 }
 
 int main(){
