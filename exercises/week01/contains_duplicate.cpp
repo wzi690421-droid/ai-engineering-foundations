@@ -2,16 +2,19 @@
 #include <iostream>
 #include <vector>
 #include <cassert>
+#include <unordered_set>
 
 bool containsDuplicate(const std::vector<int>& nums){
-    for(std::size_t i=0;i<nums.size();i++){
-       for (std::size_t j=i+1;j<nums.size();j++){
-        if(nums[i] == nums[j]){
-        return true;
+     std::unordered_set<int> seen;
+
+     for(int value : nums){
+        if(seen.find(value) != seen.end()){
+            return true;
         }
-       }
-    }
-    return false;
+        seen.insert(value);
+     }
+
+     return false;
 }
 
 int main(){
