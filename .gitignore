@@ -3,6 +3,8 @@ build/
 cmake-build-*/
 bin/
 exercises/**/top_k
+exercises/**/contains_duplicate
+exercises/**/word_frequency
 *.o
 *.obj
 *.so
