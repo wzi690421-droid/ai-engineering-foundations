@@ -5,6 +5,7 @@ bin/
 exercises/**/top_k
 exercises/**/contains_duplicate
 exercises/**/word_frequency
+exercises/**/log_parser
 *.o
 *.obj
 *.so
