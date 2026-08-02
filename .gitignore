@@ -6,6 +6,9 @@ exercises/**/top_k
 exercises/**/contains_duplicate
 exercises/**/word_frequency
 exercises/**/log_parser
+exercises/**/debug_lab/warning_bug
+exercises/**/debug_lab/asan_bug
+exercises/**/debug_lab/gdb_logic_bug
 *.o
 *.obj
 *.so
