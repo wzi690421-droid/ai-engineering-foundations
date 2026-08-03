@@ -35,7 +35,7 @@ RequestSummary summarizeRequests(
         }
         if (request.statusCode >= 200 && request.statusCode < 400) {
             ++pathCounts[request.path];
-        }       
+        }
     }
 
     summary.topPaths.reserve(pathCounts.size());
@@ -73,7 +73,7 @@ int main() {
     assert(summary1.totalCount == 6);
     assert(summary1.serverErrorCount == 3);
     assert((summary1.topPaths == std::vector<PathCount>{{"/login", 2},{"/health", 1}}));
-    
+
     std::vector<Request> requests2 = {};
     RequestSummary summary2 = summarizeRequests(requests2, 2);
     assert(summary2.totalCount == 0);
@@ -85,7 +85,7 @@ int main() {
     assert(summary3.totalCount == 6);
     assert(summary3.serverErrorCount == 3);
     assert((summary3.topPaths == std::vector<PathCount>{}));
-    
+
     RequestSummary summary4 = summarizeRequests(requests1, 8);
     assert(summary4.totalCount == 6);
     assert(summary4.serverErrorCount == 3);
@@ -95,7 +95,7 @@ int main() {
     assert(summary5.totalCount == 6);
     assert(summary5.serverErrorCount == 3);
     assert((summary5.topPaths == std::vector<PathCount>{{"/login", 2}, {"/health", 1}}));
-    
+
     std::vector<Request> requests6 = {
         {"/login", 499},
         {"/login", 500},
