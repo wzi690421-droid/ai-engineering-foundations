@@ -6,6 +6,7 @@ exercises/**/top_k
 exercises/**/contains_duplicate
 exercises/**/word_frequency
 exercises/**/log_parser
+exercises/**/analyzer_test
 exercises/**/debug_lab/warning_bug
 exercises/**/debug_lab/asan_bug
 exercises/**/debug_lab/gdb_logic_bug
@@ -42,3 +43,5 @@ checkpoints/
 logs/
 tmp/
 *.log
+!exercises/week01/log_parser_project/tests/data/
+!exercises/week01/log_parser_project/tests/data/*.log
