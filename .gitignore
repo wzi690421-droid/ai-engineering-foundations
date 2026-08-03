@@ -10,6 +10,8 @@ exercises/**/analyzer_test
 exercises/**/debug_lab/warning_bug
 exercises/**/debug_lab/asan_bug
 exercises/**/debug_lab/gdb_logic_bug
+exercises/**/day07_assessment/solution
+exercises/**/day07_assessment/solution_sanitized
 *.o
 *.obj
 *.so
