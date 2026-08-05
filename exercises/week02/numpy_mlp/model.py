@@ -83,5 +83,5 @@ def two_layer_forward(x, w1, b1, w2, b2):
         "logits": logits,
         "probabilities": probabilities
     }
-    
+
     return probabilities, cache
