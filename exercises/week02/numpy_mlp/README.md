@@ -98,7 +98,7 @@ python3 test_model.py
 全部通过时输出：
 
 ```text
-Week 2 Day 1-3 model functions passed
+Week 2 Day 1-4 model functions passed
 ```
 
 ## 完成后解释
@@ -140,3 +140,17 @@ x (N, D)
 ```
 
 前向传播保存 `x、z1、h1、logits、probabilities` 到 `cache`，供后续反向传播使用。固定输入的中间形状、概率和逐行归一结果已通过验收。
+
+## Day 4：反向传播
+
+已实现 `two_layer_backward`：
+
+```text
+loss
+  → dlogits
+  → dw2、db2、dh1
+  → ReLU mask → dz1
+  → dw1、db1
+```
+
+参数梯度形状与原参数一致；固定样例中被 ReLU 关闭的第三个隐藏神经元，对应的输入权重、偏置和输出权重梯度均为零。

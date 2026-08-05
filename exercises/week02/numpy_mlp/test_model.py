@@ -5,6 +5,7 @@ from model import (
     linear_forward,
     relu,
     softmax,
+    two_layer_backward,
     two_layer_forward,
 )
 
@@ -132,6 +133,25 @@ def test_two_layer_forward():
         ]),
     )
 
+    gradients = two_layer_backward(np.array([0, 1]), cache, w2)
+    expected_shapes = {
+        "dw1": w1.shape,
+        "db1": b1.shape,
+        "dw2": w2.shape,
+        "db2": b2.shape,
+    }
+    for name, expected_shape in expected_shapes.items():
+        assert gradients[name].shape == expected_shape
+
+    np.testing.assert_allclose(
+        gradients["dw2"],
+        np.array([
+            [1.250900633682399, -1.250900633682399],
+            [2.100488932125654, -2.100488932125654],
+            [0.0, 0.0],
+        ]),
+    )
+
 
 def main():
     test_basic_forward()
@@ -140,7 +160,7 @@ def main():
     test_inputs_unchanged()
     test_day2_math()
     test_two_layer_forward()
-    print("Week 2 Day 1-3 model functions passed")
+    print("Week 2 Day 1-4 model functions passed")
 
 
 if __name__ == "__main__":

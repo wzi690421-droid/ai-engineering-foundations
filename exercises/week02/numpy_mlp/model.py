@@ -85,3 +85,33 @@ def two_layer_forward(x, w1, b1, w2, b2):
     }
 
     return probabilities, cache
+
+def two_layer_backward(labels, cache, w2):
+    x = cache["x"]
+    z1 = cache["z1"]
+    h1 = cache["h1"]
+    probabilities = cache["probabilities"]
+
+    sample_count = labels.shape[0]
+
+    dlogits = probabilities.copy()
+    dlogits[np.arange(sample_count), labels] -= 1.0
+    dlogits /= sample_count
+
+    dw2 = h1.T @ dlogits
+    db2 = np.sum(dlogits, axis=0)
+    dh1 = dlogits @ w2.T
+
+    dz1 = dh1 * (z1 > 0)
+
+    dw1 = x.T @ dz1
+    db1 = np.sum(dz1, axis=0)
+
+    gradients = {
+        "dw1": dw1,
+        "db1": db1,
+        "dw2": dw2,
+        "db2": db2,
+    }
+
+    return gradients
