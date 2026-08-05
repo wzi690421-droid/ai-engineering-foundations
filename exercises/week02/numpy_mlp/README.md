@@ -1,4 +1,18 @@
-# Week 02 Day 01：NumPy 形状与线性层
+# Week 02：NumPy 两层神经网络
+
+## 项目结构
+
+```text
+numpy_mlp/
+├── model.py       # 线性层、激活函数、损失、前向与反向传播
+├── test_model.py  # 独立测试入口
+├── train.py       # 训练入口，Day 6 增加
+└── README.md      # 学习目标、运行方式和实验结论
+```
+
+`model.py` 只放模型数学逻辑，`test_model.py` 只放测试，后续 `train.py` 只负责数据与训练流程。
+
+## Day 1：NumPy 形状与线性层
 
 ## 今日目标
 
@@ -39,7 +53,7 @@ b = np.array([1.0, -1.0, 0.0])
 
 ## 第二部分：从空文件实现
 
-创建 `linear_layer.py`，实现：
+在 `model.py` 中实现：
 
 ```python
 def linear_forward(x, w, b):
@@ -78,13 +92,13 @@ np.testing.assert_allclose(actual, expected)
 ## 运行
 
 ```bash
-python3 linear_layer.py
+python3 test_model.py
 ```
 
 全部通过时输出：
 
 ```text
-Week 2 Day 1 linear layer passed
+Week 2 Day 1-2 model functions passed
 ```
 
 ## 完成后解释
@@ -93,3 +107,22 @@ Week 2 Day 1 linear layer passed
 2. 为什么 `(H,)` 可以加到 `(N, H)`？
 3. `(H, 1)` 能否作为这里的偏置？实际会发生什么？
 4. 为什么测试浮点结果更适合使用 `assert_allclose` 而不是 `==`？
+
+## Day 2：ReLU、Softmax 与交叉熵
+
+已实现：
+
+- `relu`：引入非线性，输入输出形状不变。
+- `softmax`：逐行生成概率，减去行最大值避免指数溢出。
+- `cross_entropy`：从概率计算平均分类损失。
+- `cross_entropy_from_logits`：通过 log-sum-exp 直接计算稳定且准确的损失。
+
+关键数据流：
+
+```text
+logits (N, C)
+  → softmax probabilities (N, C)
+  → 选取 N 个正确类别分数
+  → N 个样本损失
+  → 平均标量 loss
+```
