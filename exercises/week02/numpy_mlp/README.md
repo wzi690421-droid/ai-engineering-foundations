@@ -98,7 +98,7 @@ python3 test_model.py
 全部通过时输出：
 
 ```text
-Week 2 Day 1-2 model functions passed
+Week 2 Day 1-3 model functions passed
 ```
 
 ## 完成后解释
@@ -126,3 +126,17 @@ logits (N, C)
   → N 个样本损失
   → 平均标量 loss
 ```
+
+## Day 3：两层网络前向传播
+
+已实现 `two_layer_forward`：
+
+```text
+x (N, D)
+  → Linear 1 → z1 (N, H)
+  → ReLU     → h1 (N, H)
+  → Linear 2 → logits (N, C)
+  → Softmax  → probabilities (N, C)
+```
+
+前向传播保存 `x、z1、h1、logits、probabilities` 到 `cache`，供后续反向传播使用。固定输入的中间形状、概率和逐行归一结果已通过验收。

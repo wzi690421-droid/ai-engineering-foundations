@@ -1,6 +1,12 @@
 import numpy as np
 
-from model import cross_entropy_from_logits, linear_forward, relu, softmax
+from model import (
+    cross_entropy_from_logits,
+    linear_forward,
+    relu,
+    softmax,
+    two_layer_forward,
+)
 
 
 def make_inputs():
@@ -105,13 +111,36 @@ def test_day2_math():
     np.testing.assert_allclose(extreme_loss, 2000.0)
 
 
+def test_two_layer_forward():
+    x = np.array([[1.0, 2.0], [3.0, 4.0]])
+    w1 = np.array([[1.0, -1.0, 0.5], [0.0, 2.0, -1.0]])
+    b1 = np.array([0.0, 1.0, 0.5])
+    w2 = np.array([[1.0, -1.0], [0.5, 1.0], [-1.0, 0.5]])
+    b2 = np.array([0.2, -0.2])
+
+    probabilities, cache = two_layer_forward(x, w1, b1, w2, b2)
+
+    assert cache["z1"].shape == (2, 3)
+    assert cache["h1"].shape == (2, 3)
+    assert cache["logits"].shape == (2, 2)
+    assert probabilities.shape == (2, 2)
+    np.testing.assert_allclose(
+        probabilities,
+        np.array([
+            [0.598687660112452, 0.401312339887548],
+            [0.967704535301549, 0.032295464698451],
+        ]),
+    )
+
+
 def main():
     test_basic_forward()
     test_single_sample()
     test_invalid_shapes()
     test_inputs_unchanged()
     test_day2_math()
-    print("Week 2 Day 1-2 model functions passed")
+    test_two_layer_forward()
+    print("Week 2 Day 1-3 model functions passed")
 
 
 if __name__ == "__main__":

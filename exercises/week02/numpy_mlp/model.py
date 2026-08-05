@@ -69,3 +69,19 @@ def cross_entropy_from_logits(logits, labels):
     loss = np.mean(sample_losses)
 
     return loss
+
+def two_layer_forward(x, w1, b1, w2, b2):
+    z1 = linear_forward(x, w1, b1)
+    h1 = relu(z1)
+    logits = linear_forward(h1, w2, b2)
+    probabilities = softmax(logits)
+
+    cache = {
+        "x": x,
+        "z1": z1,
+        "h1": h1,
+        "logits": logits,
+        "probabilities": probabilities
+    }
+    
+    return probabilities, cache
