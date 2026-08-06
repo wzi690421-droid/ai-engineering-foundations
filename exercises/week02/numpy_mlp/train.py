@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import numpy as np
 
 from model import (
@@ -185,8 +187,9 @@ def main():
 
     results_array = np.array(results)
 
+    output_path = Path(__file__).resolve().parent / "learning_rate_results.csv"
     np.savetxt(
-        "learning_rate_results.csv",
+        output_path,
         results_array,
         delimiter=",",
         header=(
@@ -196,7 +199,7 @@ def main():
         comments="",
     )
 
-    print("\nResults saved to learning_rate_results.csv")
+    print(f"\nResults saved to {output_path}")
 
 
 if __name__ == "__main__":
