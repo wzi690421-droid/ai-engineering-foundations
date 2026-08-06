@@ -98,7 +98,7 @@ python3 test_model.py
 全部通过时输出：
 
 ```text
-Week 2 Day 1-4 model functions passed
+Week 2 Day 1-6 NumPy MLP passed
 ```
 
 ## 完成后解释
@@ -174,3 +174,29 @@ numerical_gradient = (loss(parameter + epsilon)
 python3 gradient_check.py
 python3 gradient_bug_lab.py
 ```
+
+## Day 6：训练循环与学习率实验
+
+`train.py` 已完成：
+
+- 生成可复现的 XOR 合成二分类数据。
+- 使用 He 初始化创建 `2 → 8 → 2` 网络。
+- 分离不更新参数的 `evaluate` 与执行梯度下降的 `train_step`。
+- 使用独立随机种子生成训练数据和测试数据。
+- 控制其他条件不变，对比三组学习率并保存原始 CSV。
+
+500 步后的实验结论：
+
+| 学习率 | 训练损失 | 训练准确率 | 测试损失 | 测试准确率 | 结论 |
+|---:|---:|---:|---:|---:|---|
+| 0.001 | 0.765505 | 0.500 | 0.767779 | 0.500 | 在学习，但收敛过慢 |
+| 0.1 | 0.009322 | 1.000 | 0.012612 | 1.000 | 快速、稳定收敛 |
+| 10.0 | 2.471274 | 0.500 | 2.471274 | 0.500 | 步长过大，无法有效优化 |
+
+运行：
+
+```bash
+python3 train.py
+```
+
+原始记录保存为 `learning_rate_results.csv`。测试集只用于 `evaluate`，不参与梯度更新。

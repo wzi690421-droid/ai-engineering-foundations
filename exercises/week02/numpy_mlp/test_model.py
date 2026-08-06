@@ -8,6 +8,7 @@ from model import (
     two_layer_backward,
     two_layer_forward,
 )
+from train import evaluate, initialize_parameters, make_xor_data, train_step
 
 
 def make_inputs():
@@ -153,6 +154,27 @@ def test_two_layer_forward():
     )
 
 
+def test_training_pipeline():
+    x, labels = make_xor_data()
+    repeated_x, repeated_labels = make_xor_data()
+    assert x.shape == (400, 2)
+    assert labels.shape == (400,)
+    np.testing.assert_array_equal(np.bincount(labels), np.array([200, 200]))
+    np.testing.assert_array_equal(x, repeated_x)
+    np.testing.assert_array_equal(labels, repeated_labels)
+
+    parameters = initialize_parameters(2, 8, 2)
+    initial_loss, initial_accuracy = evaluate(x, labels, parameters)
+
+    for _ in range(100):
+        train_step(x, labels, parameters, learning_rate=0.1)
+
+    final_loss, final_accuracy = evaluate(x, labels, parameters)
+    assert final_loss < initial_loss
+    assert final_accuracy > initial_accuracy
+    np.testing.assert_allclose(final_accuracy, 1.0)
+
+
 def main():
     test_basic_forward()
     test_single_sample()
@@ -160,7 +182,8 @@ def main():
     test_inputs_unchanged()
     test_day2_math()
     test_two_layer_forward()
-    print("Week 2 Day 1-4 model functions passed")
+    test_training_pipeline()
+    print("Week 2 Day 1-6 NumPy MLP passed")
 
 
 if __name__ == "__main__":
