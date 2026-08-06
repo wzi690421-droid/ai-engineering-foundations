@@ -154,3 +154,23 @@ loss
 ```
 
 参数梯度形状与原参数一致；固定样例中被 ReLU 关闭的第三个隐藏神经元，对应的输入权重、偏置和输出权重梯度均为零。
+
+## Day 5：梯度检查
+
+`gradient_check.py` 使用中心有限差分近似数值梯度：
+
+```text
+numerical_gradient = (loss(parameter + epsilon)
+                    - loss(parameter - epsilon)) / (2 * epsilon)
+```
+
+它逐个检查 `w1、b1、w2、b2`，与反向传播的解析梯度比较，相对误差均约为 `1e-11`。
+
+`gradient_bug_lab.py` 是独立故障练习，故意遗漏 ReLU 反向掩码。梯度检查显示 `dw2/db2` 通过而 `dw1/db1` 失败，因此可将错误定位到第二层参数梯度之后、第一层参数梯度之前。
+
+运行：
+
+```bash
+python3 gradient_check.py
+python3 gradient_bug_lab.py
+```
