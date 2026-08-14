@@ -130,7 +130,7 @@ def main():
 
     test_x, test_labels = make_xor_data(seed=2026)
 
-    learning_rates = [0.001, 0.1, 10.0]
+    learning_rates = [0.001, 0.01, 10.0]
 
     total_steps = 500
     record_interval = 100
@@ -152,11 +152,11 @@ def main():
                 train_x,
                 train_labels,
                 parameters,
-                learning_rate=learning_rate,
+                learning_rate,
             )
 
             if step % record_interval == 0:
-                loss, accuracy = evaluate(
+                train_loss, train_accuracy = evaluate(
                     train_x,
                     train_labels,
                     parameters,
@@ -171,16 +171,16 @@ def main():
                 results.append([
                     learning_rate,
                     step,
-                    loss,
-                    accuracy,
+                    train_loss,
+                    train_accuracy,
                     test_loss,
                     test_accuracy,
                 ])
 
                 print(
                     f"step={step:3d} "
-                    f"train_loss={loss:.6f} "
-                    f"train_accuracy={accuracy:.3f} "
+                    f"train_loss={train_loss:.6f} "
+                    f"train_accuracy={train_accuracy:.3f} "
                     f"test_loss={test_loss:.6f} "
                     f"test_accuracy={test_accuracy:.3f}"
                 )
@@ -188,6 +188,7 @@ def main():
     results_array = np.array(results)
 
     output_path = Path(__file__).resolve().parent / "learning_rate_results.csv"
+
     np.savetxt(
         output_path,
         results_array,
