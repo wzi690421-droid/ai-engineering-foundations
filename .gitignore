@@ -1,6 +1,7 @@
 # Build outputs
 build/
 cmake-build-*/
+compile_commands.json
 bin/
 exercises/**/top_k
 exercises/**/contains_duplicate
@@ -45,5 +46,13 @@ checkpoints/
 logs/
 tmp/
 *.log
+*.ncu-rep
+*.nsys-rep
 !exercises/week01/log_parser_project/tests/data/
 !exercises/week01/log_parser_project/tests/data/*.log
+
+# Root-level profiler scratch data
+/*.data
+
+# Local third-party SDKs
+third_party/

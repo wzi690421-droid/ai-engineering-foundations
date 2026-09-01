@@ -1,36 +1,45 @@
 # AI Engineering Foundations
 
-这是一个为期六周的长期能力提升项目。
+> 状态：基础阶段已完成并冻结（2026-09-01）。后续主项目迁移到
+> `mini-infer-runtime`，本仓库保留为可复现的训练、推理和 CUDA 基础作品集。
 
-## 总目标
+这个仓库记录了从 C++ 工程基础到 PyTorch、ONNX Runtime、CPU 推理分析、
+CUDA Kernel 和 PyTorch 自定义算子的完整学习链路。它不再继续叠加新功能，
+后续只接受复现修复、文档修正和必要的兼容性维护。
 
-把当前状态从“学过不少内容，但主要依赖 AI 完成代码”，提升到：
+## 已完成能力
 
-- 能独立实现和调试中等规模的 C++ / Python 模块；
-- 能完成并解释神经网络训练、验证和误差分析；
-- 能打通 PyTorch → ONNX → C++ 推理链路；
-- 能建立可靠 benchmark，并根据证据定位和优化性能；
-- 能交付一个可复现、可演示、可答辩的完整工程。
+- C++17、CMake、CTest、GDB 和 AddressSanitizer；
+- NumPy 两层神经网络、反向传播和梯度检查；
+- PyTorch 训练、验证、Checkpoint 和可复现实验；
+- CNN、残差网络、数据增强和错误分析；
+- PyTorch → ONNX → ONNX Runtime C++ 推理；
+- FP32/INT8 正确性、精度、延迟与体积对照；
+- CUDA 线程映射、合并访存、Reduction、GEMM 和 Nsight Compute；
+- PyTorch C++/CUDA Extension 与框架算子注册。
 
-六周内不锁定视觉、机器人、量化或大模型方向。视觉模型可以作为低成本载体，真正训练的是编程、实验、推理工程和问题解决能力。
+完整成果、验收结果和限制见 [`PROJECT_FINAL_REPORT.md`](PROJECT_FINAL_REPORT.md)。
+
+## 成果入口
+
+- [`notes/README.md`](notes/README.md)：按能力阶段组织的复盘笔记；
+- [`project/onnxruntime_cpp/README.md`](project/onnxruntime_cpp/README.md)：C++ 推理与 Benchmark；
+- [`project/cuda_kernels/README.md`](project/cuda_kernels/README.md)：CUDA Kernel 与性能实验；
+- [`project/cuda_kernels/pytorch_extension/README.md`](project/cuda_kernels/pytorch_extension/README.md)：PyTorch 自定义算子；
+- [`project/onnxruntime_cpp/results/fp32_baseline_report.md`](project/onnxruntime_cpp/results/fp32_baseline_report.md)：FP32 基线报告；
+- [`project/onnxruntime_cpp/results/stage11_quantization_report.md`](project/onnxruntime_cpp/results/stage11_quantization_report.md)：INT8 量化报告。
 
 ## 目录
 
-- `plan/六周学习计划表.md`：当前六周计划与进度；
-- `exercises/`：每周独立编程练习；
-- `project/`：六周最终完整项目；
-- `tests/`：测试代码、固定输入和验收用例；
-- `notes/`：原理总结、错误记录和周复盘；
-- `benchmarks/`：性能测试原始数据和报告。
+- `exercises/`：C++、NumPy、PyTorch 和 CNN 阶段练习；
+- `project/onnxruntime_cpp/`：CPU 推理、端到端流水线和 Benchmark；
+- `project/cuda_kernels/`：CUDA Kernel、Profiler 实验和 PyTorch Extension；
+- `notes/`：阶段复盘；
+- `plan/`：本仓库计划归档说明；
+- `benchmarks/`、各子项目 `results/`：实验原始数据和报告。
 
-## 工作规则
+## 复现边界
 
-1. 核心题先独立尝试 20–30 分钟，再向 AI 请求提示。
-2. 不能解释、不能修改、没有测试的 AI 代码不得合入项目。
-3. 每项任务必须留下可验证证据：代码、测试、实验数据或复盘。
-4. 每周进行一次短测，根据真实结果调整下一周投入。
-5. 重大方向变化先记录原因和证据，不随聊天临时漂移。
-
-## 当前任务
-
-先读取 [`plan/六周学习计划表.md`](plan/六周学习计划表.md)，当前从第 1 周 Day 5 继续。
+第三方 SDK、虚拟环境、构建目录、模型权重和 ONNX 文件不进入 Git。
+复现 ONNX Runtime 示例需要先准备对应 SDK 与模型；CUDA 示例需要 NVIDIA GPU、
+CUDA Toolkit 和匹配的驱动。详细命令和本次验收记录见最终报告及两个子项目 README。
