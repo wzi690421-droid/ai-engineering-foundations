@@ -1,0 +1,21 @@
+{
+    "evaluated_at": "2026-08-12T22:35:42.821128+08:00",
+    "run_id": "run_20260812_165446",
+    "model_sha256": "24104a00192d26cf65a8d72397bc1d3b47f63f15fb0c1ccb16ebf80b631e89a1",
+    "test_sample_count": 10000,
+    "test_loss": 0.8345337827682495,
+    "test_accuracy": 0.7086,
+    "per_class_accuracy": {
+        "airplane": 0.767,
+        "automobile": 0.85,
+        "bird": 0.545,
+        "cat": 0.523,
+        "deer": 0.631,
+        "dog": 0.587,
+        "frog": 0.74,
+        "horse": 0.807,
+        "ship": 0.815,
+        "truck": 0.821
+    },
+    "policy": "one final evaluation after model and configuration freeze; do not tune from these test metrics"
+}

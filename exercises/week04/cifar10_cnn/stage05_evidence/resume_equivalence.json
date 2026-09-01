@@ -1,0 +1,27 @@
+{
+    "sample_count": 256,
+    "batch_size": 64,
+    "continuous_metrics": [
+        [
+            2.3005757927894592,
+            0.140625
+        ],
+        [
+            2.2331190705299377,
+            0.16796875
+        ]
+    ],
+    "resumed_metrics": [
+        [
+            2.3005757927894592,
+            0.140625
+        ],
+        [
+            2.2331190705299377,
+            0.16796875
+        ]
+    ],
+    "metrics_exactly_equal": true,
+    "parameters_exactly_equal": true,
+    "maximum_parameter_difference": 0.0
+}

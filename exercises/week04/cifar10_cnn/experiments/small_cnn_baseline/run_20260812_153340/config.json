@@ -1,0 +1,9 @@
+{
+    "experiment_name": "small_cnn_baseline",
+    "model_name": "small_cnn",
+    "seed": 42,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "target_epochs": 20,
+    "validation_size": 5000
+}

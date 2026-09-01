@@ -137,6 +137,7 @@ def save_results(
         writer = csv.DictWriter(
             csv_file,
             fieldnames=fieldnames,
+            lineterminator="\n",
         )
 
         writer.writeheader()

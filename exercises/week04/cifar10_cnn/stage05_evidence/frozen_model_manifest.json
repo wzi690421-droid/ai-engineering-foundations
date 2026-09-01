@@ -1,0 +1,9 @@
+{
+    "run_id": "run_20260812_165446",
+    "model_path": "/home/wz/Projects/ai-engineering-foundations/exercises/week04/cifar10_cnn/experiments/small_cnn_augmentation_on/run_20260812_165446/checkpoints/best_model.pt",
+    "model_sha256": "24104a00192d26cf65a8d72397bc1d3b47f63f15fb0c1ccb16ebf80b631e89a1",
+    "selection_source": "validation_set_only",
+    "selection_metric": "validation_accuracy",
+    "best_validation_epoch": 18,
+    "best_validation_accuracy": 0.7118
+}

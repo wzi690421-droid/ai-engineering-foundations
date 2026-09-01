@@ -1,0 +1,13 @@
+{
+  "sample_count": 5000,
+  "changed_prediction_count": 79,
+  "fp32_correct_int8_wrong": 32,
+  "fp32_wrong_int8_correct": 22,
+  "both_wrong_different_prediction": 25,
+  "fp32_accuracy_percent": 71.17999999999999,
+  "int8_accuracy_percent": 70.98,
+  "accuracy_change_percentage_points": -0.20000000000000018,
+  "top1_agreement_percent": 98.42,
+  "mean_absolute_logit_error": 0.05599726674079895,
+  "maximum_absolute_logit_error": 3.1642398834228516
+}

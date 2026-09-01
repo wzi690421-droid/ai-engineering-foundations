@@ -1,0 +1,14 @@
+{
+    "experiment_name": "small_cnn_augmentation_off",
+    "model_name": "small_cnn",
+    "seed": 42,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "target_epochs": 20,
+    "validation_size": 5000,
+    "use_data_augmentation": false,
+    "random_crop_padding": 4,
+    "horizontal_flip_probability": 0.5,
+    "early_stopping_patience": 5,
+    "early_stopping_min_delta": 0.0
+}
